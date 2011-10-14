@@ -1,0 +1,401 @@
+자바탄생배경과 특징
+1. c(40%), c++(70%) 구문 언어 유사
+2. platform 독립적(wora)
+write once, run anywhere
+3. applet :웹브라우저상 다운로드, 내부 실행 결과 확인
+(도스:도스창, 이클립스:콘솔창)
+
+자바플랫폼 구성
+1. jdk 1.5 이상 설치(java -version)
+2. path 설정
+3. api document 설치
+4. 이클립스 설치
+
+자바프로그램 실행과정
+1. 자바소스파일 작성
+class 클래스이름{
+ public static void main(String args[]){
+   실행문장;
+ }
+}==>클래스이름.java
+2.javac 클래스이름.java(클래스이름.class파일자동생성)
+3.java 클래스이름
+
+프로젝트생성-클래스생성-이름,main체크
+-자동컴파일-run-run as-java application
+
+식별자
+첫문자 숫자 아닌 숫자 포함. 일반문자, _, $ 구성
+대소문자구분, 예약어사용불가능, 길이무제한
+
+예약어
+50여개 소문자
+TRUE, FALSE, NULL-->X
+const, goto --> 미래형 예약어(현재 예약어x, 식별자x)
+assert --> java -version --> 1.4
+sizeof( c++ 예약어이다., 자바 아니다)
+ 
+변수
+참조형(주소값 저장--> heap 영역 실제 데이터 저장 구조)
+(String)
+배열
+클래스
+인터페이스
+
+기본형(실제값 저장)
+자바 제공 타입 : 논리값,단일문자,정수,실수)
+길이 한정, 표현타입 한정
+
+boolean
+char(String)
+int
+double
+
+
+연산자
+형변환연산자 : (type)
+int i = 10;
+byte b = (byte)i;
+
+증가연산자 : ++(현재값 +1)
+감소연산자 : --(현재값 -1)
+y = x++(y=x; x=x+1) 
+++x(x=x+1; y=x)
+
+
+나머지연산자 : 9 % 2
+동등비교연산자 : ==
+and(&, &&)
+or(|, ||)
+==> &&, || : 단축논리연산자
+대입연산자 : =, 우선순위 가장 낮다
+조건삼항연산자
+boolean b = x>5?true:false;
+
+() > 단항 > 이항 > 삼항 > =
+
+배열
+동일 타입 데이터 모음
+1. 배열변수선언
+int []i;
+
+2. 배열생성
+i = new int[100];
+
+3.i.length
+0 <= index <= length-1
+0 ... 99
+
+명령행 매개변수
+도스
+java FirstApp--> main 자동 실행
+이클립스
+run 메뉴 실행--> main 자동 실행
+
+1.
+java.exen명령이나 이클립스의 run 메뉴는
+자동 main 메서드 실행
+
+2. 클래스 실행 시점 입력 변수 저장 배열 
+===> 명령행 매개변수 입력
+===> String 배열 타입으로 지정
+
+public static void main(String []args)
+100 200
+args[0] = "100";
+args[1] = "200";
+
+자바언어 + 연산자 의미
+1. 정수, 실수 + 정수, 실수 ==> 산술연산 덧셈 
+2. String + 정수, 실수==> 문자열 결합
+   String + String==> 문자열 결합
+
+String --> int 변경 api
+
+
+도스
+java FirstApp 자바 jsp 서블릿 
+입력하고 실행
+--> main 자동 실행
+이클립스
+run-run configurations-arguments-자바 jsp 서블릿 입력 실행
+
+(jvm 자동 실행 문장)
+===================================
+args = new String[3];
+args[0] = "자바"; 
+args[1] = "jsp"; 
+args[2] = "서블릿"; 
+=====================================
+
+자바소스 알아보고 싶은 것
+명령행 매개변수 갯수 :
+명령행 매개변수들 출력:
+
+
+
+조건문
+if-else
+if(boolean){
+ t...;;;
+}
+else{
+ f....
+}
+
+switch-case
+switch(int){
+ case 상수값1:
+ int 변수가 상수값1과 동일한 경우 수행 문장 정의
+ break;//switch종료. 
+ case 상수값2:
+ int 변수가 상수값2과 동일한 경우 수행 문장 정의
+ break;//switch종료 
+ .....
+ default:
+ 위에 나열한 case과 일치하지 않는 나머지 경우 수행 문장 ㅈ
+ 정의
+}
+////////
+
+반복문
+1-10 정수 총합
+for(int i = 1; i <= 10; i++){
+ sum += i;
+}
+10-100 홀수 총합
+for(int i = 10; i <= 100; i = i+2){
+ sum += i;
+} 
+
+while
+1-10 정수 총합
+int i = 1;
+while(i <= 10){
+ sum += i; 
+ i++;
+}
+
+
+while(true){
+ sum += i; 
+ i++;
+}
+
+do-while: 1번 이상 
+
+int i = 11;
+do{
+ sum += i; 
+ i++;
+}
+while(i <= 10);
+
+
+for : 유한횟수
+while : 0 이상 무한횟수
+do-while : 1 이상 무한횟수
+
+이동문
+break
+1. switch블록 종료하고 블록 다음 문장 이동
+2. 반복문 반복 종료하고 반복문 다음 문장 이동
+
+continue
+반복문 반복 일시생략하고 반복문 처음 문장 이동하면
+나머지 반복 계속 수행
+
+
+return
+메서드를 중단하고 메서드를 호출한 곳으로 이동
+
+===================================================
+
+part 2 자바 객체지향 프로그래밍
+5장 객체지향개념 
+객체/클래스와 관계
+
+6장 클래스와 다형성
+1) 객체 특성 파악(코딩이전)
+2) 클래스 정의
+
+[modifier] class 클래스이름 [extends ;7장..][implements :8장..]{
+    ==> 선언부
+   ===> 멤버부 
+ [modifier] 메서드:객체동적특성
+ [modifier] 변수:객체정적특성
+ [modifier] 생성자:(메서드와형태비슷). 객체생성시점 수행 문장 정의
+}
+
+6장 전체 클래스 구조
+- 선언부, modifier 정리
+- 클래스정의-->객체생성 문장 구조, 메모리 변화
+---------하나의 자바파일 저장-------------
+class A{}
+class B{}
+---------------------------
+
+A.java 또는 B.java 가능 --> A.class/B.class
+
+---------하나의 자바파일 저장-------------
+public class A{}
+class B{}
+---------------------------
+
+A.java 가능 --> A.class/B.class
+
+---------하나의 자바파일 저장-------------
+class A{public static void main..(){}}
+class B{}
+---------------------------
+
+A.java 가능 --> A.class/B.class
+
+
+
+
+[modifier] : 수정자 한정자 제한자 지정자
+활용방법이나 접근 권한 등을 지정 자바 몇개의 키워드들
+
+
+class A{
+ class B{}==> A의 innerclass
+}
+===> 용도 : 자바 ui 프로그램 설계 : 안드로이드폰, 갤럭시탭
+
+
+- 변수 활용. 
+class A{
+ int i;==>멤버변수 : 클래스내부 선언. 사용범위 
+ methodX(){
+  int j = 10;==>지역변수 : 메서드내부 선언. 사용범위(SCOPE) 한정
+ }
+ methodY(){
+  s.o.p(j);===>error
+  s.o.p(i);
+ } 
+}
+
+ [modifier] 데이터타입 변수명 ;==>멤버변수
+ 기본형/참조형 식별자규칙
+
+ [modifier] : 활용방법이나 접근권한 키워드들
+
+static 변수
+1. static변수:모든 객체가 공통 하나의 값 공유 변수
+클래스변수. 클래스영역 저장. 1개 저장
+
+클래스명.클래스변수
+객체참조변수명.클래스변수
+
+Person.nation==p1.nation==p2.nation
+
+2. non-static변수: 객체마다 서로 다른 값 저장 변수
+객체변수. 객체영역 저장. 객체갯수만큼 저장
+
+객체참조변수명.객체변수
+클래스명.객체변수==>error
+
+Person.name==.error
+p1.name
+p2.name
+
+
+
+class it교육생{
+이름
+나이
+장소 = 멀티캠퍼스;
+}
+
+api
+패키지-->클래스 -->변수
+패키지-->클래스 -->메서드
+
+java.lang 패키지의 
+Integer 클래스의 MAX_VALUE 변수 찾아서 특징
+
+int 최대값과 최소값 출력
+2^31-1
+Integer.MAX_VALUE
+Integer.MIN_VALUE
+Math.PI ==>원주율(3.14 원 공유)
+
+ststic import
+변수 공유 : 클래스명.static변수
+
+final : 최종적, 더이상수정불가능
+final 변수 : 변수값 수정불가능(=상수)
+1. static 공유 변수
+2. 자바 규칙 선언된 변수
+3. 절대불변의 진리값 표현 변수
+4. 대문자 구성 이름 (api)
+ 
+Integer.MAX_VALUE=2^31-1
+Integer.MIN_VALUE=-2^31
+Math.PI=3.14..
+static final
+
+
+변수 public protected private static final 
+
+=======================================
+- 생성자 (constructor)
+객체특성파악-->클래스정의-->객체생성
+
+Employee  hong           = new           Employee();
+클래스명  객체참조변수명 객체생성연산자 생성자호출(); 
+
+1)용도 :
+ 클래스 정의한 후에 객체 생성 과정 실행 문장 정의 
+2) new 키워드 뒤 호출 (=객체생성시점 호출)
+3) 자바 모든 클래스 기본 생성자 자동 정의(jvm)
+  클래스명(){super();}
+4) 생성자 이름은 클래스 이름과 같다
+5) 클래스명 (변수전달){ 다른 문장 정의}
+  사용자 생성자 정의 가능. 기본 생성자 자동 삭제
+6) 형태
+[modifier] 클래스명([매개변수]) {
+  객체생성시점 문장 정의
+}
+7)modifier : public protected private
+
+8) 생성자 overloading 가능(다형성 표현 구문)
+하나의 클래스 내부에 같은 이름의 생성자 여러개 정의
+매개변수 갯수나 타입이나 순서 다르게 정의
+==> 객체 생성 방법 다양하게 제공
+    객체 생성 형태 다양하게 제공
+
+객체지향언어 조건
+1. 캡술화와 정보은닉
+2. ....
+3. 다형성(polymorphism)
+
+9) this 키워드 존재 : 
+현재 자신의 객체 의미 키워드
+   class A{
+    this...
+   }
+9-1. 멤버변수와 지역변수,매개변수 이름이 같은 경우
+구분위해 사용
+this.객체변수
+
+9-2. 자신 포함 다른 생성자 호출 
+    (생성자 overloading시에)
+this(....);
+
+생성자 : 객체생성시마다 반복 name = "" age = xx
+this : 다른 생성자 정의 내용 반복하지 말고 재사용
+
+
+
+
+- 메서드 활용.
+
+7장 상속
+
+
+
+7장 상속 정의 구문
+8장 인터페이스 정의 구문
+

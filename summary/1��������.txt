@@ -1,0 +1,462 @@
+java programming 과정
+강사 조 성 희
+bluejeansh@hanmail.net
+삼성멀티캠퍼스 전임교수
+자바, 안드로이드, HTML5 강의
+
+목차(자바 언어 구문 + 기본 내장 함수=라이브러리)
+
+PART1 자바 기본 프로그래밍
+1-4장 탄생, 특징, 환경설정, 자바프로그래밍 작성순서
+변수, 연산자, 조건문, 반복문, 이동문, 배열
+(월)
+
+PART2 자바 객체지향 프로그래밍
+5-10장
+객체지향, 객체, 클래스,
+상속, 메서드 오버로딩
+메서드 오버라이딩
+인터페이스
+super, this
+==>5개 이상 활용, 개념
+(화,수,목)
+
+PART3 자바 기본 api
+11-14장
+api : sun 사 자바 개발자 위해 미리 구현 라이브러리모음제공
+(금)
+
+수업시간 : part3 일부 내용 제외 가능성
+
+
+
+
+servlet, jsp, spring, hibernate....
+===> java 언어 선수지식
+
+1장
+자바 탄생배경/자바 특징
+
+과정 입과 목적
+
+프로그래밍 언어 경험
+
+2장 자바플랫폼 구성
+1.jdk tool 설치
+
+api+jvm==>java platform
+
+다운로드
+java.sun.com==>www.oracle.com
+다운로드-->db developer/java ...
+--> java se/me/ee
+--> version 1.5, 1.6 
+--> windows 
+--> 가입 form 폼 작성
+--> 다운로드
+
+jdk 1.0, 1.1===> 1.2(3분야분류 api방대), 1.3, 1.4
+===> 1.5(새로문 구문 추가), 1.6
+
+설치:windows : 기본설치(교재 30p~32p)
+api(=library : 사용자)
+: C:\Program Files\Java\jdk1.5.0_12\jre\lib\rt.jar(압축파일)
+
+ 
+jvm 제공 기능 사용 명령어 
+: C:\Program Files\Java\jdk1.5.0_12\bin\*.exe
+
+
+javac.exe:컴파일러
+java.exe:실행
+
+
+2.환경변수 path 설정(35p-36p)
+
+javac.exe 도스 실행 며령어 : 경로 입력 필요
+경로 빼고 입력 인식 가능 설정
+
+시작-설정-제어판-시스템항목-고급탭-환경변수-시스템변수
+-PATH -편집
+
+3.api document 설치(37p)
+api : jdk 설치 
+api 정보 제공 도움말 별도 설치 
+
+다운로드
+java.sun.com==>www.oracle.com
+다운로드-->db developer/java ...
+--> java se/me/ee
+--> version 1.5, 1.6 
+--> 화면 아래 스크롤, jdk document download
+--> 다운로드
+
+====================================== 
+jdk 설치
+document 설치
+환경변수 path 설정
+===>기본환경설치
+======================================
+53p 자바 어플리케이션 실행과정
+1. 소스파일 작성:에디터없다
+메모장
+class 클래스이름{ 
+ public static void main (String argd[]){
+   실행 문장 ;
+ }
+}
+===>클래스이름.java
+    대소문자 구분!!!!
+    
+2.컴파일
+도스 실행
+javac 클래스이름.java
+(컴파일:클래스이름.java(텍스트파일-->바이너리파일변환)
+         클래스이름.class 파일 자동 생성)
+3.실행
+java 클래스이름
+
+ 
+ 라인번호표시
+ 자바키워드색상별표시
+ 자동대소문자수정
+ + 도스 명령어 입력 불편
+ ===> 개선된 에디터 + 메뉴 실행 하나로 제공
+      (통합개발툴)
+      
+초보자용
+울트라 에디트
+에디트 플러스
+...
+중급자용
+이클립스: 가장 많은 자바개발자 사용 중
+j 빌더
+넷빈즈:jdk + 넷빈즈
+
+      
+ 
+4.통합개발툴 설치(이클립스 설치):38p
+www.eclipse.org=>다운로드
+==> 
+3.2:a;;...
+3.3:europa
+3.4:genymede
+
+
+3.5:galileo
+3.6:helios
+3.7:indigo
+
+
+eclipse-java-galileo-win32.zip
+
+1. c:\ 폴더 설정하여 압축해제
+2. c:\eclipse\eclipse.exe 파일 실행
+3. c:\eclipse\workspace 폴더 지정
+4. 프로젝트 생성
+file-new-java project-이름(ch3) 입력
+c:\eclipse\workspace\ch3 폴더로 생성
+c:\eclipse\workspace\ch3\src\*.java 파일 저장
+                        \bin\*.class 파일 저장 
+                        \system library\*.jar 
+5. 자바 클래스 생성
+file-new-class-이름 (FirstApp) 입력, main 체크
+c:\eclipse\workspace\ch3\src\FirstApp.java
+
+6. 자동 컴파일
+c:\eclipse\workspace\ch3\bin\FirstApp.class 파일 자동
+ 
+7. 실행
+run-run as - java application
+(console 창 결과 보인다)
+
+메모장+도스 / 이클립스
+ 
+---------------------------------------------
+cic 시스템 자료실:한 자료당(50m)
+
+\\70.12.108.130\공유\sw\폴더에 프로그램 공유
+----------------------------------------------
+
+4장 
+식별자(identifier)규칙(컴파일오류)ㅒ
+클래스이름
+메서드이름(main제외)
+변수이름
+1. 일반문자 , 숫자, _, $ 구성
+2. 첫문자 숫자 시작 불가능
+3. 예약어 불가능
+4. 대소문자 구분
+5. 길이 무제한
+#abc
+123abc
+abc123-->o
+class
+
+
+2^16  = 65536 길이 
+
+1 bit = 0, 1 표현 정보 단위
+2 bit = 2 ^ 2
+8 bit = 2^8=256===> 1byte
+
+
+식별자관례(프로그래머약속)
+클래스이름:명사 첫문자 대문자
+메서드이름(main제외):동사 첫문자 소문자
+변수이름:명사 첫문자 소문자 
+
+Integer
+name
+Name
+getName
+setInt
+
+예약어
+50여개 소문자!!!!!
+1. TRUE, FALSE, NULL----->x
+===> true, falsem, null-->o
+2. const, goto ---> 예약어 등록. 현재 기능 상실
+(미래형 키워드, 식별자 사용불가ㅣ)
+3. assert : 1.4 버전이상 추가
+
+java -version
+
+4. sizeof---> c, c++ 비교
+자바 예약어 아니다
+c
+정수 : integer : windows : 2byte
+                 unix : 4byte
+                 
+java : 정수 : int : win, unix, mac : 4byte 고정
+
+-----------------------------------------------
+
+변수
+참조형변수(주소값)
+배열
+클래스
+인터페이스
+
+기본형변수(실제값:8가지)
+boolean:논리값:true, false 2값만 표현 : 1byte
+boolean b1 = true;
+boolean b2 = false;
+
+if( 10 > 5 )==> 결과는 boolean 타입이다
+
+char : 단일문자 : 2바이트. 
+ascii code : 1byte : 2^8=256문자
+uniocode : 2byte : 2^16=65536문자
+
+char c1 = '가';
+char c2 = 'a';
+char c3 = 'A';
+(String s1 = "abc";)
+
+정수 기본 int : 4byte(32비트) : -2^31 ~ 2^31 - 1
+[부호(1비트)][ 값(31비트) ]
+0:양수
+1:음수
+
+실수 기본 double : 8byte(64비트) : 
+[부호(1비트)][ 가수(52) ][ 지수(11) ]
+0:양수
+1:음수
+==> 
+double 타입 최대값/최소값 미리 계산 제공 api
+
+S.O.P(Double.MAX_VALUE);
+Double.MIN_VALUE
+
+Integer.MAX_VALUE
+Integer.MIN_VALUE
+
+기본형변수
+boolean/char/int/double
+
+연산자
+1) 형변환연산자  : (datatype명)
+byte b = 10;===> 1바이트(8비트) 정수 (
+b = 127 + 10;
+
+[부호(1비트)][ 값(7비트) ]:  -2^7 ~ 2^7-1(-128 ~ 127)
+0:양수
+1:음수
+
+byte b = 10;
+int i = (int)b;
+i = 127 + 10;
+
+- boolean 제외
+boolean true 또는 false 값만 가지는데,
+int i= 0;
+boolean b = (boolean)i;===>0 처럼 다른 값을 가지게 되므로
+
+- 자동형변환(기본형:7개)
+형변환연산자 생략하고도 자동 형변환 가능 경우
+char-->int-->long-->float-->double
+byte-->short-->int-->long-->float-->double
+
+int i = 10;
+double d = i;
+
+- 명시적형변환
+형변환연산자 필수 명시 사용해야 형변환 가능 경우
+double d = 3.14;
+int i = (int) d;==> 3
+
+왜 형변환 필요 이유
+
+api : 
+sum(int i){
+ i 변수 값 100번 더한 결과 계산
+}
+
+내
+m(){
+double d = 3.14;
+sum((int)d);
+
+}
+
+2) + - * /
+
+변수/연산자 : 기본 제공(언어마다 형태 / 종류 다르다)
+
+
+일반 언어 배열: 여러 데이터 모음
+자바 언어 배열: 동일 타입의 데이터를 여러개 모아놓은
+                참조형변수(stack-heap)
+
+배열
+{10, 20, 30, 40, 50}-->5개 정수 배열 생성
+
+1. 배열 변수 선언
+int i [];
+int []i;
+
+stack
+i: null
+
+2. 배열 생성(heap 영역)
+i = new int[5];
+
+stack    heap
+i:100--->100:[][][][][]
+
+i.length==> 5
+
+3. 배열 값 초기화
+i[0] = 10;
+i[1] = 20;
+i[2] = 30;
+i[3] = 40;
+i[4] = 50;
+
+
+i[5] =>error 
+
+===============================================
+{"java", "jsp", "servlet"}-->3개 문자열 배열 생성
+
+1. 배열(기본형변수+참조형변수) 변수 선언
+String i [];
+String []i;
+
+stack
+i: null
+
+2. 배열 생성(heap 영역)
+i = new String[3];
+
+stack    heap
+i:100--->100:[][][]
+
+i.length==> 3
+
+3. 배열 값 초기화
+i[0] = "java";
+i[1] = "jsp";
+i[2] = "servlet";
+
+? i[] = new ?[몇개];
+
+
+
+int i;--> 변수 선언(메모리 i 4바이트 공간 할당 )
+i = 10;--> 변수값 초기화(4바이트 공간에 10 저장)
+
+==> int i = 10;
+
+조건문
+if-else
+
+if(boolean수식){
+ true 수행 문장들;
+}
+
+if(boolean수식){
+ true 수행 문장들;
+}
+else{
+ false 수행 문장;
+}
+
+if(수식1){
+ 수식1true 수행 문장들;
+}
+else if(수식2){
+ 수식1 false이고 수식2 true  수행 문장;
+}
+
+
+switch-case
+
+반복문
+for
+for(int i = 1; i <=10; i++){
+sum = sum + i;
+}
+===> 1 ~ 10 정수 총합 sum 저장
+
+1 + 2 + 3 + .... + 10
+
+for(반복시작문장; 반복조건식문장; 변화식문장){
+ 반복 수행 필요 문장 정의
+}
+
+
+while
+do-while
+
+이동문
+
+배열 : 89p
+
+명령행 매개변수 : 96p
+
+조건문
+if-else
+switch-case
+
+반복문
+for
+while
+do-while
+
+이동문
+break
+continue
+return
+
+실습과제 : 5시 이후 과제 : 내일아침 9시 이전 
+강사pc\과제물제출\이름폴더
+
+
+
+
+
+
+
+

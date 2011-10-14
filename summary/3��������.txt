@@ -1,0 +1,502 @@
+객체:실세계 명사 표현 ==> 자바 s/w 단위 표현
+1.객체특성파악
+정적/동적
+2.클래스정의(=객체 틀 정의)
+정적==>변수
+동적==>메서드
+3.여러개 객체생성(=클래스변수와 메서드 복사 메모리 할당)
+==> "new" 
+클래스
+선언부
+[modifier] class 이름 [상속...]
+
+멤버부
+멤버변수/메서드/생성자
+
+modifier:접근권한이나 활용방법 지정 키워드들
+
+접근권한 : public/protected/private
+활용방법 : static/final/abstract
+
+객체생성문장
+class A{
+ int i;
+}==> 
+A a1 = new A();==>메모리 i변수복사본 메모리 할당
+s.o.p(a1.i);
+
+===> i변수 메모리 로딩(할당=저장) 프로그램 사용 가능
+
+멤버변수<--->지역변수
+[m] datatype name;
+
+public:모든 클래스 무제한 변수 사용
+protected: 같은 패키지 + 다른 패키지의 상속받은 클래스
+(default=no modifier):같은 패키지
+private : 현재 클래스 내부 사용
+===> 변수, 생성자, 메서드
+
+static:모든 객체 하나의 값 공유 변수
+클래스명.static변수
+객체참조변수명.static변수
+
+Integer.MAX_VALUE
+Math.PI
+
+final:상수
+class Integer{
+ static final public int MAX_VALUE = 2^31-1;
+ 
+	parseInt(String s){
+	
+	}
+}
+
+
+생성자
+class A{
+ int i;
+ A(int i){ this.i = i; }
+ A(String s){i = Integer.parseInt(s);}
+ A(double i){this((int)i);}
+}
+형변환연산자 : 기본형변수끼리만 가능(String 제외)
+
+A a4 = new A(10.99);
+a4.i==:10
+
+A a3 = new A("10");
+a3.i===>10
+A a2 = new A(10);
+a2.i===>10
+
+
+A        a1             = new            A();
+클래스명 객체참조변수명  객체생성연산자 생성자호출
+1. 클래스명과 같다
+2. new 키워드 호출
+3. 객체생성시점 수행 필요 문장 정의
+4. 기본생성자 자동 정의
+ 클래스이름(){  super(); }
+5. 사용자정의 생성자 존재하면 기본생성자 자동 삭제
+6. [modifier] 클래스이름([매개변수]){
+  객체생성시점 수행 필요 문장
+}
+7. 생성자 overloading 가능 : 객체 생성 방법 다양하게 제공
+하나의 클래스에 같은 이름의 생성자 여러개 정의'
+매개변수 리스트 다르게 정의
+8. this 가능
+this.멤버변수-==-> 멤버변수와 지역변수 구분 
+                   의미 명확 전달
+
+this(변수)==.생성자 오버로딩시 다른 생성자 호출
+              코드 재사용
+               
+part 3 api
+자주 사용 api
+11장 
+java.lang.Integer클래스
+int i = 10;
+int j = 20;
+String s = "30":
+i+j
+i==> 2진수변경연산자존재하지않는다
+Integer.toHexString(10);
+Integer.parseInt(s);
+
+역할 
+자바 int 타입 제공되지 않는 연산자를
+메서드 구현하여 미리 제공 클래스
+ 
+특징
+jdk 1.5
+autoboxing/autounboxing
+
+1. int i = 100;
+   Integer in = new Integer(100);
+   
+   int i = new Integer(100);
+   Integer in = 100;
+      
+2. static import (static변수 미리 할당 사용) 
+import static java.lang.Math.PI;
+  ....
+  S.O.P(PI); 
+변수
+MAX_VALUE / MIN_VALUE
+
+메서드
+parseInt()
+toBinaryString(-1);
+
+생성자
+Integer(int i);
+
+java.lang.String클래스
+역할 : 문자열 표현 조작 쉽게 도와주는 클래스
+"...."
+특징
+1. new 키워드 없이도 객체 생성 가능
+   String s1 = "java";
+   String s2 = "java";
+   String s3 = new String("java");
+   String s4 = new String("java");
+ 
+if(s1 == s2)
+if(s1.equals(s2))
+if(s3 == s4)
+if(s3.equals(s4))
+
+ 
+   
+2. + 연산자 이용하여 문자열 결합
+String s1 = new String("java");
+String s2 = new String("jsp");
+
+s1.concate(s2)===>"javajsp"
+s1 + s2       ===>"javajsp"
+
+
+변수:대소문자구분변수
+메서드
+equals() : 두 문자열 내용 동등성 비교(t/f)
+concate() : 두 문자열 하나로 결합
+toLowerCase() : ,소문자변경
+toUpperCase(): 대문자변경
+"servlet".replace('s', 'j');
+"servlet".substring(4, 7);
+
+생성자
+String s1 = new String("java");
+char c[] = {'a', 'b', 'c', 'd'};
+String s2 = new String(c);==>"abcd"
+
+==================================================
+
+메서드:객체동적특성표현
+형태
+[modifier] returntype 이름([매개변수]) {
+ 객체동적표현=기능구현
+ 
+}
+ 
+ - public protected private : 멤버변수 동일
+ - static메서드
+ - final, abstract메서드 : 7장
+ 
+ - returntype  
+ : void + 기본형변수(8) + 참조형변수(배열, 클래스, 인터페이스)
+ void ma(){
+  int result1 = mb();==>호출하면 mb()이동
+  String result2 = mc();
+  md();
+ }
+ void md(){
+  int j = 10;
+  s.o.p(j*j);
+ }:ma() 이동하면서 리턴 결과 없다
+ 
+  
+ String mc(){
+  ......
+  return "java";
+ }
+  
+ int mb(){
+  int j = 10;-->지역변수
+  return j * j;-->마지막 문장.
+  ma() 이동하면서 j*j 결과 전달
+ }
+ 
+  
+ - 구현부
+ 1) 객체동적특성표현
+ 2) 하나의 기능 구현
+ 3) 기능이 각 객체마다 필요 : 한번만 정의하고 호출
+ 
+ - static메서드
+ 모든 객체 공통값 1개 공유 변수만 사용하는 메서드
+ 클래스명.static메서드명
+ 
+ 클래스영역 저장/1개 저장/클래스메서드(<-->객체메서드)
+ static메서드내부 static변수 사용 가능
+ static메서드내부 객체변수 사용 불가능
+ 
+ 
+ static변수
+ 모든 객체 공통값 1개 공유
+ 클래스명.static변수
+ 
+ 클래스영역 저장/1개 저장/클래스변수
+ 
+ run 메뉴(java.exe명령) 실행 3단계
+ 1단계 class loading time
+ 클래스영역(공유) static 변수와 static 메서드 저장 시간
+ 2단계 (static직접연관x)
+ 내컴퓨터 : A.class, B.class A{ B...사용} 
+ 내친구컴퓨터 : A.class 실행 오류발생
+ 코드 verify (검증 : 컴파일시점)
+ 3단계 main() 메서드실행. 객체생성문장.
+ 객체영역 객체변수와 객체메서드 저장 시간
+ 
+ static메서드내부 static변수(a) 사용 가능
+ static메서드내부 객체변수(b) 사용 불가능
+ 
+ static메서드 접근 : 1개 저장 동일 메서드 의미
+ Test.m1() ==  o1.m1() ==  o2.m1()
+ 
+ 객체메서드 접근 : 객체영역마자 저장. 서로 다른 메서드
+                 클래스명 접근 불가
+ 
+ Test.m2();===>error
+ o1.m2() !=  o2.m2()
+
+Integer.parseInt()==>api 
+
+================================================
+ 
+ - 메서드 overloading
+ 하나의 클래스에 메서드 여러개 정의
+ 이름은 같고 매개변수 리스트 다르게 정의
+ (순서나 타입이나 갯수 중 하나 이상 다르게 정의)
+ 리턴타입, modifier 제한없다
+ 
+ 하나의 기능(+연산자)을 매개변수 따라서
+ 여러가지 기능처럼 사용
+ ===>  다형성 표현
+ 
+  1.생성자 overloading
+  2.메서드 overloading
+  :1개 이름 : 기능 다양
+  
+ - 매개변수 개념과 전달원리
+자바 : 생성자 메서드
+
+call by value: 실매개변수의 값을 복사하여 
+               형식매개변수로  전달
+
+기본형변수 전달 :실제값 	복사 전달
+형식매개변수(i) 값 변경되면
+실매개변수(j) 값 변경되지 않는다
+
+참조형변수 전달 :주소값 복사 전달
+실매개변수와 형식매개변수 참조 객체 동일
+형식매개변수(s) 참조 객체 내부 변수(s.a)값 변경되면
+실매개변수(t) 참조 객체 내부 변수(t.a)값 변경된다
+
+
+void ma(){
+ int j = 10;
+ mb(j);==>호출하려면 형식매개변수 개수, 타입, 순서 전달
+          실매개변수
+ ...
+}
+
+void mb(int i){==>mb()실행되려면 int 1개 외부 전달
+===> 형식매개변수
+ 
+}
+ 
+6장
+modifier
+객체생성문장
+멤버변수
+생성자
+메서드
+
+1.캡슐화와 정보은닉:클래스/접근modifier
+2.상속
+3.다형성:overloading
+
+
+7장 상속과 다형성
+
+상속과 변수
+1.상위클래스 변수 하위클래스 자동 포함 사용 가능
+2.private 변수 하위클래스 사용 불가능
+3.상,하위클래스 동일명 변수 존재
+==>하위클래스 변수 우선 사용
+(상위클래스 변수 : super 키워드)
+4.상,하위클래스 static 동일명 변수 존재
+==>하위클래스 변수 우선 사용
+(상위클래스 변수 : 상위클래스명.static변수명)
+
+
+상속과 메서드
+1.상위클래스 메서드 하위클래스 자동 포함 사용 가능
+2.private 메서드 하위클래스 사용 불가능
+3.상,하위클래스 동일명 메서드 존재
+==>하위클래스 메서드 우선 사용
+(상위클래스 메서드 : super 키워드)
+4.상,하위클래스 static 동일명 메서드 존재
+==>하위클래스 메서드 우선 사용
+(상위클래스 메서드 : 상위클래스명.static메서드)
+
+자바 다형성 지원(메서드쪽)
+메서드 overriding(우선시하다)
+상위클래스로부터 상속 메서드 내용 수정 필요
+하위클래스 수정 가능
+==>
+상,하위클래스 동일명 메서드 존재
+==>하위클래스 메서드 우선 사용
+(상위클래스 메서드 : super 키워드)
+
+상,하위클래스 동일명 메서드 존재
+매개변수 같고
+리턴타입 같고 
+modifier 같거나 더 넓어야 한다
+private < (default) < protected < public
+
+class 회사원{
+ 본봉 , 수당, 총급여; 
+ void 급여계산(){ 총급여 = 본봉 + 수당;}
+}
+
+class 임원 extends 회사원 {
+ 임원수당, 부하직원수;
+  void 급여계산(){ 총급여 = 본봉 + 임원수당 + 수당;}
+}
+
+자바 다형성 지원(메서드쪽)
+1) 메서드 overriding
+상위클래스로부터 상속 메서드 내용 수정 필요
+하위클래스 수정 가능
+상,하위클래스 동일명 메서드 존재
+매개변수 같고
+리턴타입 같고 
+modifier 같거나 더 넓어야 한다
+2) 메서드 overloading
+하나의 클래스 내부에 같은 이름의 메서드 여러개 정의
+매개변수 다르고 리턴타입이나 modifier 상관없다
+
+상속과 변수
+상속과 메서드 오버라이딩
+상속과 메서드 modifier
+public protected private 
+static
+
+final:수정불가능
+final변수:변수값 수정 불가능(=상수)
+final메서드:메서드 내용 수정 불가능(오버라이딩 금지)
+final클래스:상속 금지. 객체생성의무화
+
+abstract<--->final(상속 의무화, 객체생성금지)
+                  (오버라이딩 의무화)
+abstract메서드
+: 메서드 선언부만 있고 구현부 없는 경우 선언
+  메서드 오버라이딩 의무화
+  
+abstract클래스
+:abstract메서드 1개 이상 포함 클래스 선언
+객체생성 불가능. 상속 의무화
+
+abstract class 도형{
+ abstract void 면적();
+ abstract void 둘레();
+}
+
+class 사각형 extends 도형{
+ void 면적(){가로 * 세로;}
+ void 둘레(){2*(가로 + 세로);}
+}
+
+class 원 extends 도형{
+ void 면적(){반지름 * 반지름 * 3.14;}
+ void 둘레(){2 * 반지름 * 3.14;}
+}
+
+class 삼각형{....}
+class 오각형{....}
+
+도형 shape = new 도형();
+==> 객체생성 불가능
+    (변수와 메서드 구현부 메모리 할당 불가능)
+
+--------------------------
+//팀장 
+class 사각형{
+ void 면적(){가로 * 세로;}
+}//A
+
+class 원 {
+ void 둘레(){2 * 반지름 * 3.14;}
+}//B
+--------------------------------------
+abstract class 도형{
+ abstract void 면적();
+ abstract void 둘레();
+}//팀장
+(여러클래스 공통 정의할 기능 메서드 선언)
+서로 다른 여러개 클래스의 공통 기능 스펙, 명세서 정의
+
+
+class 사각형 extends 도형{
+ void 면적(){가로 * 세로;}
+ void 둘레(){2*(가로 + 세로);}
+}//A
+
+class 원 extends 도형{
+ void 면적(){반지름 * 반지름 * 3.14;}
+ void 둘레(){2 * 반지름 * 3.14;}
+}//B
+
+
+\\70.12.108.130\공유\ch7\abstract폴더 4개 복사
+이클립스 붙여넣기
+
+Shape.java : 도형 클래스
+Circle.java : 원 클래스
+Rectangle.java : 사각형 클래스
+ShapeUser.java : main 클래스
+
+상속과 변수
+상속과 메서드
+
+상속과 생성자 자동 호출
+class A           {}
+class B extends A {}
+....
+main(){
+ B b1 = new B();
+ ==>B객체생성=B생성자호출=B변수와 메서드 복사 할당
+    +
+    (jvm자동)
+    A객체생성==A생성자호출=A변수와 메서드 복사 할당
+
+하위클래스 생성자 호출시에는
+jvm 자동으로 
+상위클래스 생성자 호출
+
+객체의미키워드 : super/this
+super:상위클래스 객체 의미 키워드
+
+super.상위멤버변수명:상,하위클래스 멤버변수이름구분
+super.상위메서드명(): 상,하위클래스 오버라이딩 메서드구분
+
+super():상위클래스기본생성자호출 첫문장
+        ==> 생성자 첫문장 "자동" 호출
+super(변수):상위클래스사용자정의생성자호출 첫문장 
+        ==> 생성자 첫문장 "명시적" 호출
+
+this:자신의 객체 의미 키워드
+
+this.멤버변수명:변수이름구분
+
+this(변수):다른생성자호출
+
+
+ class Super {
+         int i;
+         Super(int i) { 
+          this.i = i * i;
+         }
+       }
+       class Sub extends Super {
+        public static void main(String[] args) {
+         Sub b = new Sub(2);
+        }
+       Sub(int i) {
+         System.out.println(i);
+       }
+} 
+
